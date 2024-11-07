@@ -39,7 +39,7 @@ class Gatherer {
                 .limit(totalObj)
                 .collect(Collectors.toList());
 
-        System.out.println("Objects filtered out:");
+        System.out.println("\nObjects filtered out:");
         filteredOut.forEach(System.out::println);
 
         return filteredListByCity;

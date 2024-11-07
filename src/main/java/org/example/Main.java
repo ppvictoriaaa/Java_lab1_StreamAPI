@@ -2,9 +2,6 @@ package org.example;
 
 import java.util.stream.IntStream;
 
-import static org.example.Gatherer.filterByClothType;
-import static org.example.Gatherer.filterByMonth;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -33,7 +30,6 @@ public class Main {
 
         // Capitalize first letter of the city name.
         String cityName = inputCity.isEmpty() ? "" : inputCity.substring(0, 1).toUpperCase() + inputCity.substring(1).toLowerCase();
-        System.out.println("cityName = " + cityName);
 
         // Generate the list of Clothes objects using the Gatherer class based on user input.
         List<Clothes> clothesList = Gatherer.gather(skipCount, totalObjects, cityName);
@@ -50,7 +46,7 @@ public class Main {
         int maxMonths = scan.nextInt();
 
         // Filter the clothes list by the specified month range.
-        List<Clothes> groupedByMonth = filterByMonth(clothesList, minMonths, maxMonths);
+        List<Clothes> groupedByMonth = Gatherer.filterByMonth(clothesList, minMonths, maxMonths);
 
         // Print the filtered Clothes objects by month range.
         System.out.println("\n\nFiltered from " + minMonths + " to " + maxMonths + " month from now:");
@@ -58,7 +54,7 @@ public class Main {
                 .forEach((i -> System.out.println((i + 1) + ") " + groupedByMonth.get(i))));
 
         // Group the filtered list of clothes by their cloth type.
-        Map<String, List<Clothes>> groupedByClothType = filterByClothType(groupedByMonth);
+        Map<String, List<Clothes>> groupedByClothType = Gatherer.filterByClothType(groupedByMonth);
 
         // Print the Clothes objects grouped by cloth type.
         System.out.println("\nFiltered by Cloth Type");
